@@ -82,7 +82,7 @@ func Connect(client net.Conn) (net.Conn, error) {
 	destAddrPort := fmt.Sprintf("%s:%d", addr, port)
 	dest, err := net.Dial("tcp", destAddrPort)
 	if err != nil {
-		return nil, fmt.Errorf("dial dst: %w", dest)
+		return nil, fmt.Errorf("dial dst: %w", err)
 	}
 
 	n, err = client.Write([]byte{0x05, 0x00, 0x00, 0x01, 0, 0, 0, 0, 0, 0})
