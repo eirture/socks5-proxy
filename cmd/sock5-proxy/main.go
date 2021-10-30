@@ -11,6 +11,7 @@ import (
 )
 
 func Socks5Forward(client, target net.Conn) {
+	fmt.Printf("forward: %s -> %s\n", client.RemoteAddr(), target.RemoteAddr())
 	forward := func(src, dest net.Conn) {
 		defer src.Close()
 		defer dest.Close()
