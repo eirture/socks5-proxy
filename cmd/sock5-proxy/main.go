@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"io"
 	"log"
 	"net"
@@ -11,7 +10,7 @@ import (
 )
 
 func Socks5Forward(client, target net.Conn) {
-	fmt.Printf("forward: %s -> %s\n", client.RemoteAddr(), target.RemoteAddr())
+	log.Printf("forward: %s -> %s\n", client.RemoteAddr(), target.RemoteAddr())
 	forward := func(src, dest net.Conn) {
 		defer src.Close()
 		defer dest.Close()
@@ -23,14 +22,14 @@ func Socks5Forward(client, target net.Conn) {
 
 func process(client net.Conn) {
 	if err := socks5.Auth(client); err != nil {
-		fmt.Println("auth error:", err)
+		log.Println("auth error:", err)
 		client.Close()
 		return
 	}
 
 	target, err := socks5.Connect(client)
 	if err != nil {
-		fmt.Println("connect error:", err)
+		log.Println("connect error:", err)
 		client.Close()
 		return
 	}
