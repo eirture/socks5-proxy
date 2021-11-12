@@ -4,7 +4,7 @@ version ?= unknown
 .PHONY: build
 build:
 	@mkdir -p bin
-	go build -o bin/socks5-proxy ./cmd/...
+	go build -o bin/ ./cmd/...
 
 .PHONY: pkg
 pkg: clean

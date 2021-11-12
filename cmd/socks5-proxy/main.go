@@ -6,7 +6,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/eirture/sock5-proxy/lib/socks5"
+	"github.com/eirture/socks5-proxy/lib/socks5"
 )
 
 func Socks5Forward(client, target net.Conn) {
